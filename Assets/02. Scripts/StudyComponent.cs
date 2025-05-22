@@ -2,14 +2,25 @@ using UnityEngine;
 
 public class StudyComponent : MonoBehaviour
 {
-    GameObject obj;
+    public GameObject obj;
 
-    public string changeName;
+    public Mesh mesh;
+    public Material mat;
 
-    private void Start()
+    void Start()
     {
-        obj = GameObject.Find("Main Camera");
+        CreateCube();
+    }
+    public void CreateCube()
+    {
+        obj = new GameObject("Cube");
 
-        obj.name = changeName;
+        obj.AddComponent<MeshFilter>();
+        obj.GetComponent<MeshFilter>().mesh = mesh;
+
+        obj.AddComponent<MeshRenderer>();
+        obj.GetComponent<MeshRenderer>().material = mat;
+
+        obj.AddComponent<BoxCollider>();
     }
 }

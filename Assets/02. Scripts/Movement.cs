@@ -6,24 +6,12 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W)) // 앞으로 가는 기능
-        {
-            transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
-        }
+        float h = Input.GetAxis("Horizontal"); //수평
+        float v = Input.GetAxis("Vertical"); //수직
 
-        if (Input.GetKeyDown(KeyCode.S)) // 뒤로 가는 기능
-        {
-            transform.position += Vector3.back * moveSpeed * Time.deltaTime;
-        }
+        Vector3 dir = new Vector3(h, 0, v);
+        Debug.Log($"현재 입력 : {dir}");
 
-        if (Input.GetKeyDown(KeyCode.A)) // 왼쪽으로 가는 기능
-        {
-            transform.position += Vector3.left * moveSpeed * Time.deltaTime;
-        }
-
-        if (Input.GetKeyDown(KeyCode.D)) // 오른쪽으로 가는 기능
-        {
-            transform.position += Vector3.right * moveSpeed * Time.deltaTime;
-        }
+        transform.position += dir * moveSpeed * Time.deltaTime;
     }
 }
